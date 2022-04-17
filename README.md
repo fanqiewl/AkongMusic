@@ -12,6 +12,7 @@
 
 感谢QQ群[AkongMusic](https://jq.qq.com/?_wv=1027&k=kPEC75Ek)的每一位群员的贴心测试
 ## 编译须知
+### 项目所需SQL脚本存储于sql目录中
 该项目均由IDEA进行开发构建
 
 采用原生Spring开发的Javaweb项目
@@ -34,6 +35,7 @@
 - IDEA 2021.1.1
 - Maven 3.8.2
 - tomcat 8.5.40
+- MySQL 8.0
 
 ## 项目截图
 <div align="center">

@@ -28,7 +28,7 @@ public class YSEPanHelper {
     /**
      * 网盘密码
      */
-    public static String pwd = "yin20020419";
+    public static String pwd;
     /**
      * 网盘HOST地址
      */
@@ -386,9 +386,10 @@ public class YSEPanHelper {
     }
 
     public static void main(String[] args) throws IOException {
+        initLoginInfo("网盘地址", "网盘密码");
 
         // System.out.println(YSEPanHelper.subHostHead("http://fanqiewl.ysepan.com/"));
-        System.out.println(YSEPanHelper.login());
+        System.out.println(login());
 
         System.out.println(test());
 
