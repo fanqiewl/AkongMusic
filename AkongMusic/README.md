@@ -8,7 +8,7 @@
 # 下载依赖
 npm install
 
-# 开发测试运行项目 localhost:8080
+# 开发测试运行项目 localhost:8081
 npm run dev
 
 # 打包项目
