@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+  <!-- 编码过滤器 -->
+  <filter>
+    <filter-name>encodingFilter</filter-name>
+    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>encodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <!-- 我的编码过滤器 -->
+  <filter>
+    <filter-name>myEncodingFilter</filter-name>
+    <filter-class>com.akong.base.filter.EncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>myEncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <!-- 同源策略过滤器 -->
+  <filter>
+    <filter-name>cross</filter-name>
+    <filter-class>com.akong.base.util.CrosFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>cross</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <!--log4j配置文件地址 -->
+  <context-param>
+    <param-name>log4jConfiguration</param-name>
+    <param-value>classpath:log4j2.xml</param-value>
+  </context-param>
+  <!-- Log4j的监听器要放在spring监听器前面 -->
+  <listener>
+    <listener-class>org.apache.logging.log4j.web.Log4jServletContextListener</listener-class>
+  </listener>
+  <filter>
+    <filter-name>log4jServletFilter</filter-name>
+    <filter-class>org.apache.logging.log4j.web.Log4jServletFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>log4jServletFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>FORWARD</dispatcher>
+    <dispatcher>INCLUDE</dispatcher>
+    <dispatcher>ERROR</dispatcher>
+  </filter-mapping>
+
+  <!-- 配置DispatcherServlet -->
+  <servlet>
+    <servlet-name>SpringMVC</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <!-- 配置springMVC需要加载的配置文件-->
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>classpath:spring-*.xml</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+    <async-supported>true</async-supported>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SpringMVC</servlet-name>
+    <!-- 匹配所有请求 -->
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+
+</web-app>
+        

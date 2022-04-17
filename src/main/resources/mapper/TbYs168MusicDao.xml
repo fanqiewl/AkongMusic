@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.akong.music.dao.TbYs168MusicDao">
+  <resultMap id="BaseResultMap" type="com.akong.music.pojo.Music">
+    <id column="rid" jdbcType="INTEGER" property="rid" />
+    <result column="pic" jdbcType="VARCHAR" property="pic" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="artist" jdbcType="VARCHAR" property="artist" />
+    <result column="album" jdbcType="VARCHAR" property="album" />
+    <result column="songTimeMinutes" jdbcType="VARCHAR" property="songTimeMinutes" />
+    <result column="coopFormats" jdbcType="VARCHAR" property="coopFormats" typeHandler="com.akong.music.util.StringToStringArrayHandler" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    rid, pic, `name`, artist, album, songTimeMinutes, coopFormats
+  </sql>
+
+  <select id="selectMusicByName" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_ys168_music
+    where `name` like concat('%', #{music.name}, '%') or artist like concat('%', #{music.name}, '%')
+  </select>
+
+</mapper>
