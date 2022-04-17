@@ -1,21 +1,18 @@
-# akong-music
+# Akong-Music
 
-> A Vue.js project
+> 个人音乐网站（切记先下载依赖）
 
 ## Build Setup
 
 ``` bash
-# install dependencies
+# 下载依赖
 npm install
 
-# serve with hot reload at localhost:8080
+# 开发测试运行项目 localhost:8080
 npm run dev
 
-# build for production with minification
+# 打包项目
 npm run build
 
 # build for production and view the bundle analyzer report
 npm run build --report
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
